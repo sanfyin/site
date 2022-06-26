@@ -26,7 +26,7 @@ title: Sanfyin                          # the main title
 tagline: Learning Computer System   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  A minimal, responsive, and powerful Jekyll theme for presenting professional writing. OK
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn: 'https://raw.githubusercontent.com/sanfyin/resources/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/logo_s.png'
+avatar: '/logo.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -190,6 +190,7 @@ exclude:
   - gulpfile.js
   - node_modules
   - package*.json
+  - deploy.sh
 
 jekyll-archives:
   enabled: [categories, tags]

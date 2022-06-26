@@ -3,17 +3,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>/</id>
   <title>Sanfyin</title>
-  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-06-26T10:38:17+05:30</updated>
+  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing. OK</subtitle>
+  <updated>2022-06-26T12:15:36+05:30</updated>
   <author>
-    <name>your_full_name</name>
+    <name>Sanfy.In</name>
     <uri>/</uri>
   </author>
   <link rel="self" type="application/atom+xml" href="/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
     href="/"/>
   <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
-  <rights> © 2022 your_full_name </rights>
+  <rights> © 2022 Sanfy.In </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
@@ -64,7 +64,7 @@ Create GA account a...
     <link href="/posts/customize-the-favicon/" rel="alternate" type="text/html" title="Customize the Favicon" />
     <published>2019-08-10T22:04:00+05:30</published>
   
-    <updated>2019-08-10T22:04:00+05:30</updated>
+    <updated>2022-06-26T11:34:10+05:30</updated>
   
     <id>/posts/customize-the-favicon/</id>
     <content src="/posts/customize-the-favicon/" />
@@ -74,7 +74,7 @@ Create GA account a...
 
   
     
-    <category term="Blogging" />
+    <category term="Courses" />
     
     <category term="Tutorial" />
     
