@@ -4,7 +4,7 @@
   <id>/</id>
   <title>Sanfyin</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing. OK</subtitle>
-  <updated>2022-06-26T14:20:40+05:30</updated>
+  <updated>2022-06-26T14:24:35+05:30</updated>
   <author>
     <name>Sanfy.In</name>
     <uri>/</uri>
@@ -101,7 +101,7 @@ Create GA account a...
     <link href="/posts/customize-the-favicon/" rel="alternate" type="text/html" title="Customize the Favicon" />
     <published>2019-08-10T22:04:00+05:30</published>
   
-    <updated>2022-06-26T11:34:10+05:30</updated>
+    <updated>2022-06-26T14:24:32+05:30</updated>
   
     <id>/posts/customize-the-favicon/</id>
     <content src="/posts/customize-the-favicon/" />
@@ -113,7 +113,7 @@ Create GA account a...
     
     <category term="Courses" />
     
-    <category term="Tutorial" />
+    <category term="DSA" />
     
   
 
