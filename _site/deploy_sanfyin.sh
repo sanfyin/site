@@ -10,9 +10,9 @@ git push
 
 docker-compose up
 
-cp -R _site/ ../sanfyin
+cp -R _site/ ../sanfyin.github.io
 
-cd ../sanfyin
+cd ../sanfyin.github.io
 
 git add .
 

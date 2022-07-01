@@ -6,4 +6,5 @@ categories: [Courses, DSA]
 tags: [dsa, Data Structure]
 ---
 
-#Welcome to DSA
+## Welcome to DSA
+
