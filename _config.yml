@@ -21,12 +21,12 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Sanfyin                          # the main title
+title: SanfyIn                          # the main title
 
-tagline: Learning Computer System   # it will display as the sub-title
+tagline: Learning Software Engineering   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing. OK
+  A blogging site for sharing the experience of building software
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''

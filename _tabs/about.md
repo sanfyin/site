@@ -4,6 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Hello People,
+Hello Everyone,
 
-This site is created to keep resources related to computer science.
+With an experience of more than 9 years of software developement, we have created this place to share our knowledge and experiences.
