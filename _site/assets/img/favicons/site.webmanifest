@@ -1,9 +1,9 @@
 
 
 {
-  "name": "Sanfyin",
-  "short_name": "Sanfyin",
-  "description": "A minimal, responsive, and powerful Jekyll theme for presenting professional writing. OK",
+  "name": "SanfyIn",
+  "short_name": "SanfyIn",
+  "description": "A blogging site for sharing the experience of building software",
   "icons": [
     {
       "src": "/assets/img/favicons/android-chrome-192x192.png",

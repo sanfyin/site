@@ -1547,7 +1547,7 @@ $sidebar-display: "sidebar-display";
 
   #topbar,
   #main {
-    max-width: $main-content-max-width;
+    max-width: calc(#{$main-content-max-width} * 2);
   }
 
   #core-wrapper,
