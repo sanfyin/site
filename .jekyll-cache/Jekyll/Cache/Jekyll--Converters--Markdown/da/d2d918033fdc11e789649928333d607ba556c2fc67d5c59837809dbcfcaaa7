@@ -1,0 +1,33 @@
+I"<h2 id="introduction">Introduction</h2>
+
+<p>C# is an Object Oriented Programming language and it has many similarities to Java, C++ and VB. In fact, C#
+combines the power and efficiency of C++, the simple and clean object oriented design of Java and the language simplification of Visual Basic.</p>
+
+<h3 id="writing-your-first-hello-world-program-in-c">Writing Your First Hello World Program in C#</h3>
+
+<p>We can use any Text Editor for writting a C# program. We will use Visual Studio Code for this course.</p>
+
+<p>Open Visual Studio Code. Create a new file and name it as Program.cs. Write below Code and save the file.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To compile this file, open terminal from VS Code menu. Alternatively, open command prompt in Windows or Terminal in Mac. Now, run below command:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="go">csc Program.cs
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+:ET

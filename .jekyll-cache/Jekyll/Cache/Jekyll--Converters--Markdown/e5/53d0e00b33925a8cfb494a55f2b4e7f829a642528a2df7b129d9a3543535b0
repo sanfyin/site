@@ -1,0 +1,594 @@
+I"_?<h2 id="maths-for-coding">Maths for coding</h2>
+
+<h3 id="sieve-of-eratosthenes----to-find-the-prime-numbers">Sieve of Eratosthenes -  to find the Prime Numbers</h3>
+
+<h3 id="find-gcd">Find GCD</h3>
+<p>gcd(a,b) = gcd(a-b,b)</p>
+
+<p>if a&gt;b</p>
+
+<p>gcd(a,b) = gcd(b,a%b)</p>
+
+<p>def gcd(a,b):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>if b==0:
+	return b
+
+return gcd(b, a%b)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>public static int gcd(int a, int b)
+{
+	if(b == 0)
+	{
+	return a;
+	}</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return gcd(b, a%b); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="fast-power">Fast Power</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>
+    <span class="kt">int</span> <span class="n">res</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span> <span class="n">b</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">((</span><span class="n">b</span> <span class="p">&amp;</span> <span class="m">1</span><span class="p">)</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">res</span> <span class="p">=</span> <span class="n">res</span> <span class="p">*</span> <span class="n">a</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">a</span> <span class="p">=</span> <span class="n">a</span> <span class="p">*</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">b</span> <span class="p">=</span> <span class="n">b</span> <span class="p">&gt;&gt;</span> <span class="m">1</span><span class="p">;</span> 
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="catalan-numbers">Catalan Numbers</h2>
+
+<ol>
+  <li>Program to write Catalan Numbers</li>
+</ol>
+
+<p>dp[0] = 1
+dp[1] = 1</p>
+
+<p>for i in range(2,n):
+	for j in range(i):
+		dp[i] += dp[j]*dp[i-j-1]</p>
+
+<p>Variations:</p>
+<ol>
+  <li>Number of Binary Search Trees.</li>
+  <li>Count of Valleys and Mountains</li>
+  <li>Count of Brackets</li>
+  <li>Dyk Words</li>
+  <li>Maze path above diagonal</li>
+  <li>Circle and Chords</li>
+  <li>Number of ways of Triangulation</li>
+  <li>Minimum score of Triangulation</li>
+</ol>
+
+<h2 id="0-1-knapsack">0-1 Knapsack</h2>
+
+<p>def knapsack(wt: List[int], val: List[int], int W, int n)-&gt;int:
+	if n == 0 or W == 0:
+		return 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if wt[n-1] &lt;= W:
+	return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n-1), 
+				knapsack(wt,val, W, n-1))
+else:
+	return knapsack(wt,val, W, n-1)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Subset Sum</li>
+  <li>Equal Sum Partition</li>
+  <li>Count of Subset Sum</li>
+  <li>Minimum Subset sum difference</li>
+  <li>Target Sum</li>
+  <li>Number of subset with given difference</li>
+</ol>
+
+<h2 id="unbounded-knapsack">Unbounded Knapsack</h2>
+
+<p>def knapsack(wt: List[int], val: List[int], int W, int n)-&gt;int:
+	if n == 0 or W == 0:
+		return 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if wt[n-1] &lt;= W:
+	return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n), 
+				knapsack(wt,val, W, n-1))
+else:
+	return knapsack(wt,val, W, n-1)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Rod cutting</li>
+  <li>Coin Change</li>
+  <li>Coin Change 2</li>
+  <li>Maximum Ribbon Cut</li>
+</ol>
+
+<h2 id="fibonacci">Fibonacci</h2>
+
+<p>def fibo(n: int)-&gt; int:
+	dp[0] = 0
+	dp[1] = 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>for i in range(2,n+1):
+	dp[i] = dp[i-1] + dp[i-2]
+	
+return dp[n]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Fibonacci number</li>
+  <li>Climb Stair</li>
+  <li>Climb Stairs With Variable Jump</li>
+  <li>Climb Stairs with Minimum Moves</li>
+  <li>Minimum cost in Maze Path</li>
+  <li>Goldmine</li>
+</ol>
+
+<h2 id="lcs---longest-common-subsequence">LCS - Longest Common Subsequence</h2>
+
+<p>def lcs(x: str, y: str, n: int, m: int)-&gt;int:
+	if n == 0 or m == 0:
+		return 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if x[n] == y[m]:
+	return 1 + lcs(x, y, n-1, m-1)
+else:
+	return max(lcs(x, y, n-1, m),
+				lcs(x, y, n, m-1))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Longest Common Subsequence</li>
+  <li>Largest Common Substring</li>
+  <li>Print LCS</li>
+  <li>Shortest common Superseuence</li>
+  <li>Print SCS</li>
+  <li>Minimum number of insertion or deletion to convert string a to b</li>
+  <li>Length of largest subsequence of a which is a substring in b</li>
+  <li>Subsequence pattern matching</li>
+  <li>Count how many times a appears as subsequence in b</li>
+  <li>Largest Palindromic Subsequence</li>
+  <li>Largest Palindromic Substring</li>
+  <li>Count of Palindromic Substring</li>
+  <li>Minimum number of deletions in a string to make it a Palindrome</li>
+  <li>Minimum number of insertions in a string to make it a Palindrome</li>
+  <li>Largest Repeating Subsequence</li>
+</ol>
+
+<h2 id="lis">LIS</h2>
+
+<ol>
+  <li>LIS</li>
+  <li>Print all LIS</li>
+  <li>Maxumum sum increasing subsequence</li>
+  <li>Longest Bitonic Subsequence</li>
+  <li>Maximum Non-Overlapping Bridges</li>
+  <li>Russian Doll Envelopes</li>
+  <li>Perfect Squares</li>
+  <li>Highway Billboard problem</li>
+</ol>
+
+<h2 id="kadaness-algorithm">Kadanes’s Algorithm</h2>
+
+<ol>
+  <li>Maximum Sum Subarray</li>
+  <li>Maximum consecutive 1</li>
+</ol>
+
+<h2 id="matrix-chain-multiplication">Matrix Chain Multiplication</h2>
+
+<p>def solve(arr: str/List, i: int, j: int)-&gt;int:
+	if i &gt; j:
+		return 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>for k in range(i,j):
+	temp = solve(arr, i,k) + solve(arr, k+1,j)
+	
+	ans = cal(temp, ans)
+
+return ans
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>MCM</li>
+  <li>Printing MCM</li>
+  <li>Evaluate Expression to true / Boolean Parenthesisations</li>
+  <li>Min/ Max value of an Expression</li>
+  <li>Palindromic Partitioning</li>
+  <li>Scramble String</li>
+  <li>Egg Dropping Problem</li>
+</ol>
+
+<h2 id="dp-on-trees">DP on Trees</h2>
+
+<p>def solve(root: Node)-&gt; int:
+	if root is None:
+		return 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>l = solve(root.left)
+r = solve(root.right)
+
+temp = calc(l,r)
+
+ans = max/min(temp, ans)
+
+res = max/min(res,ans)
+
+return res
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Diameter of a Binary tree</li>
+  <li>Maximum Path sum from any node to any</li>
+  <li>Maximum Path sum from Leaf to leaf</li>
+  <li>Diameter of N-array Tree</li>
+</ol>
+
+<h2 id="dp-on-grid">DP on Grid</h2>
+
+<h2 id="count-pattern">Count Pattern</h2>
+
+<p>def solve(n):
+	dp1 = [ 0 for i in range(n+1)]
+	dp2 = [ 0 for i in range(n+1)]</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>dp1[1] = 1
+dp2[1] = 1
+
+for i in range(2, n+1):
+	dp2[i] = dp2[i-1] + dp1[i-1]
+	dp1[i] = dp2[i-1]
+	
+
+return dp1[n] + dp2[n]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Count Binary String</li>
+  <li>Arrange Building</li>
+  <li>Decode Ways</li>
+  <li>Count Subsequencees of form A<em>B</em>C* Subsequences</li>
+  <li>Maximum Sum Non Adjacent Elements</li>
+  <li>Paint House 3 color</li>
+  <li>Paint House many color</li>
+  <li>Paint Fences</li>
+  <li>Tiling with Dominos</li>
+  <li>Tiling with M*1 Tiles</li>
+  <li>
+    <p>Friends pairing
+f(n) = f(n-1) + (n-1)f(n-2)</p>
+  </li>
+  <li>Partition into Subsets
+f(n,k) = k*f(n-1,k) + f(n-1,k-1)</li>
+</ol>
+
+<h2 id="buy-sell-shares">Buy Sell Shares</h2>
+<ol>
+  <li>
+    <p>Best Time to Buy and Sell Stocks - one transaction</p>
+
+    <p>lsf = IntMax
+ op = 0
+ pist = 0</p>
+
+    <p>for p in range(len(prices)):
+     if prices[p] &lt; lsf:
+         lsf = pist</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre> pist = prices[p] - lsf		
+ op = max(op, pist)
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Best Time to Buy and Sell Stocks - infinite transaction</p>
+
+    <p>bp = 0
+sp = 0
+ans = 0</p>
+
+    <p>for p in range(1, len(prices)):
+    if prices[p] &lt; sp:
+        ans += prices[sp] - prices[bp]</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>    bp = p
+    sp = p
+else:
+    sp += 1
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Best Time to Buy and Sell Stocks - with transaction fees</p>
+
+    <p>bsp = prices[0]
+ssp = 0</p>
+
+    <p>for p in range(1, len(prices)):
+    tempbsp = min((prices[p] - ssp), bsp)
+    ssp = max((prices[p] - bsp - f), ssp)
+    bsp = tempbsp</p>
+  </li>
+  <li>
+    <p>Best Time to Buy and Sell Stocks - infinite transaction with cool down</p>
+
+    <p>bsp = prices[0]
+ ssp = 0
+ csp = 0</p>
+
+    <p>for p in range(1, len(prices)):
+     nbsp = min((prices[p] - csp), bsp)
+     nssp = max((prices[p] - bsp), ssp)
+     ncsp = max(ssp , csp)</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre> bsp = nbsp
+ sso = nssp
+ csp = ncsp 
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Best Time to Buy and Sell Stocks - two transaction</p>
+  </li>
+  <li>
+    <p>Best Time to Buy and Sell Stocks - k transaction</p>
+  </li>
+</ol>
+
+<h2 id="others">Others</h2>
+<ol>
+  <li>
+    <p>Largest Square Sub Matrix</p>
+
+    <p>for i in range(n-1, -1,-1):
+      for j in range(m-1, -1, -1):
+      	if i == n-1 or j == m-1 or M[i][j] == 0:
+             A[i][j] = M[i][j]
+             continue</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>     A[i][j] = 1 + min(A[i][j-1], A[i-1][j], A[i-1][j-1]))
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="greedy-algorithm">Greedy Algorithm</h3>
+
+<h1 id="local-optimal-solution">Local optimal solution</h1>
+
+<ol>
+  <li>N meetings in one room</li>
+  <li>Maximum meetings in one room</li>
+  <li>Shop in Candy store</li>
+  <li>Check if it is possible to survive on Island</li>
+  <li>Reverse words in a given string</li>
+  <li>Chocolate Distribution Problem</li>
+  <li>Minimum cost of ropes</li>
+  <li>Huffman Coding</li>
+  <li>Fractional Knapsack</li>
+  <li>
+    <p>Job Sequencing Problem</p>
+  </li>
+  <li>Maximum performance of a team - LC1383</li>
+</ol>
+
+<h3 id="sliding-windows">Sliding Windows</h3>
+
+<ol>
+  <li>Maximum Sum Subarray of size K</li>
+  <li>
+    <p>First Negative Number in every Window of Size K</p>
+  </li>
+  <li>Count Unique Characters of All Substrings of a Given String</li>
+</ol>
+
+ 	- contribution of a Character = leftWindowCount * rightWindowCount 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>- Create dict&lt;char, List&lt;int&gt;&gt; to hold index of each character
+- ABCAACD - len(str) = 6
+- A -&gt; -1,0,3,4,7
+- left = I[i] - I(i-1)
+- right = I[i+1] - I[i]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li>Maximum Sum Circular Subarray</li>
+</ol>
+
+<ul>
+  <li>find max_sum, min_sum, total_sum</li>
+  <li>if total sum = min_sum, return max sum</li>
+  <li>else return max(max_sum, total_sum - min_sum)</li>
+</ul>
+
+<h3 id="stack">Stack</h3>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Remove K digits</td>
+          <td>Build lowest number</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<ul>
+  <li>remove first peak</li>
+  <li>Use stack, remove if the top of stack is greater than the current element and keep decrementing k</li>
+  <li>if stack is empty and current element is 0, skip to next element.</li>
+  <li>If k = 0, insert rest of the element in the stack.</li>
+  <li>remove element from stack and create the string</li>
+  <li>T O(N), S O(N)</li>
+</ul>
+
+<h3 id="graph">Graph</h3>
+
+<p>class Edge:
+	def <strong>init</strong>(self):
+		self.src
+		self.nbr
+		self.wt</p>
+
+<h3 id="bit-manipulation">Bit Manipulation</h3>
+
+<p>0 MSB - covert as it is
+1 MSB - 2’s complement
+4bit signed - -8 to 7
+4bit unsigned - 0 to 16</p>
+
+<p>decimal to binary
++ve - fit in bits
+-ve - Covert to binary without sign - Fit in bits - 2’s complement</p>
+
+<p>on - or
+off - and
+toggle - xor
+check - and</p>
+
+<h3 id="binary-search">Binary Search</h3>
+
+<ol>
+  <li>Allocate Minimum Number Of Pages</li>
+</ol>
+
+<p>nums = [10, 20, 30, 40]</p>
+
+<p>if m &gt; len(nums):
+	return -1</p>
+
+<p>start = Max(nums)
+end = Sum(nums)</p>
+
+<p>res = -1</p>
+
+<p>while start &lt;= end:
+	mid = start + (end - start)/2</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if isValid(nums,mid,m) == true:
+	res = mid
+	end = mid - 1
+else:
+	start = mid + 1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>def isValid(nums, max, m):
+	tempM = 1
+	sum = 0</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>for n in nums:
+	sum += n
+	
+	if sum &gt; max:
+		tempM++
+		
+		if(tempM &gt; m):
+			return false
+		sum  = n
+
+return true
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+:ET
