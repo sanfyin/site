@@ -3,15 +3,43 @@ title: DSA Patterns
 author: Sanfyin
 date: 2022-09-18 00:34:00 +0800
 tags: [algorithm]
+intro: Welcome here
 ---
+
+With a good amount of practice of known questions, some very hard unknown DSA questions can be solved. There are well known patterns of questions and most of the questions that are asked in interviews fall into one or the other. If we do enough practice, we can easily identify the pattern and derive a solution. In this article, we will try to introduce the common patterns for solving DSA problems.
 
 ## Maths for coding
 
-### Sieve of Eratosthenes -  to find the Prime Numbers
+### Sieve of Eratosthenes - to find the Prime Numbers
+
+```cs
 
 
+	const int MAX = 1000000;
+
+	// Declare a boolean array and mark all element as prime
+    bool[] primes = new bool[MAX + 1];
+    for (int i=0; i<primes.Length; i++) {
+      primes[i] = true;
+    }
+
+    // Loop through a portion of the array (up to the square root of MAX). If
+    // it's a prime, ensure all multiples of it are set to false, as they
+    // clearly cannot be prime.
+    for (int i=2; i<Math.Sqrt(MAX)+1; i++) {
+      if (primes[i-1]) {
+        for (int j=(int) Math.Pow(i,2); j<=MAX; j+=i) {
+          primes[j - 1] = false;
+        }
+      }
+    }
+
+```
 
 ### Find GCD
+
+```cs
+
 gcd(a,b) = gcd(a-b,b)
 
 if a>b
@@ -22,23 +50,25 @@ def gcd(a,b):
 
 	if b==0:
 		return b
-	
+
 	return gcd(b, a%b)
-	
-	
-	
+
+
+
 public static int gcd(int a, int b)
 {
 	if(b == 0)
 	{
 	return a;
 	}
-	
+
 	return gcd(b, a%b);
 }
-	
 
-### Fast Power 
+
+```
+
+### Fast Power
 
 ```cs
 
@@ -49,9 +79,9 @@ public static int gcd(int a, int b)
         {
             res = res * a;
         }
-        
+
         a = a * a;
-        b = b >> 1; 
+        b = b >> 1;
     }
 
     return res;
@@ -62,6 +92,8 @@ public static int gcd(int a, int b)
 
 1. Program to write Catalan Numbers
 
+```python
+
 dp[0] = 1
 dp[1] = 1
 
@@ -69,7 +101,10 @@ for i in range(2,n):
 	for j in range(i):
 		dp[i] += dp[j]*dp[i-j-1]
 
+```
+
 Variations:
+
 2. Number of Binary Search Trees.
 3. Count of Valleys and Mountains
 4. Count of Brackets
@@ -79,19 +114,18 @@ Variations:
 8. Number of ways of Triangulation
 9. Minimum score of Triangulation
 
-
 ## 0-1 Knapsack
 
+```python
 def knapsack(wt: List[int], val: List[int], int W, int n)->int:
 	if n == 0 or W == 0:
 		return 0
-		
 	if wt[n-1] <= W:
-		return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n-1), 
-					knapsack(wt,val, W, n-1))
+		return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n-1),knapsack(wt,val, W, n-1))
 	else:
 		return knapsack(wt,val, W, n-1)
-	
+
+```
 
 1. Subset Sum
 2. Equal Sum Partition
@@ -102,15 +136,17 @@ def knapsack(wt: List[int], val: List[int], int W, int n)->int:
 
 ## Unbounded Knapsack
 
+```python
+
 def knapsack(wt: List[int], val: List[int], int W, int n)->int:
 	if n == 0 or W == 0:
 		return 0
-		
 	if wt[n-1] <= W:
-		return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n), 
-					knapsack(wt,val, W, n-1))
+		return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n),knapsack(wt,val, W, n-1))
 	else:
 		return knapsack(wt,val, W, n-1)
+
+```
 
 1. Rod cutting
 2. Coin Change
@@ -119,15 +155,17 @@ def knapsack(wt: List[int], val: List[int], int W, int n)->int:
 
 ## Fibonacci
 
+```python
+
 def fibo(n: int)-> int:
 	dp[0] = 0
 	dp[1] = 0
-	
 	for i in range(2,n+1):
 		dp[i] = dp[i-1] + dp[i-2]
-		
 	return dp[n]
-	
+
+```
+
 1. Fibonacci number
 2. Climb Stair
 3. Climb Stairs With Variable Jump
@@ -137,21 +175,20 @@ def fibo(n: int)-> int:
 
 ## LCS - Longest Common Subsequence
 
+```cs
 def lcs(x: str, y: str, n: int, m: int)->int:
 	if n == 0 or m == 0:
 		return 0
-	
 	if x[n] == y[m]:
 		return 1 + lcs(x, y, n-1, m-1)
 	else:
-		return max(lcs(x, y, n-1, m),
-					lcs(x, y, n, m-1))
-	
+		return max(lcs(x, y, n-1, m),lcs(x, y, n, m-1))
+```
 
 1. Longest Common Subsequence
 2. Largest Common Substring
 3. Print LCS
-4. Shortest common Superseuence
+4. Shortest common Super sequence
 5. Print SCS
 6. Minimum number of insertion or deletion to convert string a to b
 7. Length of largest subsequence of a which is a substring in b
@@ -168,7 +205,7 @@ def lcs(x: str, y: str, n: int, m: int)->int:
 
 1. LIS
 2. Print all LIS
-3. Maxumum sum increasing subsequence
+3. Maximum sum increasing subsequence
 4. Longest Bitonic Subsequence
 5. Maximum Non-Overlapping Bridges
 6. Russian Doll Envelopes
@@ -182,16 +219,17 @@ def lcs(x: str, y: str, n: int, m: int)->int:
 
 ## Matrix Chain Multiplication
 
+```python
+
 def solve(arr: str/List, i: int, j: int)->int:
 	if i > j:
 		return 0
-	
 	for k in range(i,j):
 		temp = solve(arr, i,k) + solve(arr, k+1,j)
-		
-		ans = cal(temp, ans)
-	
+	ans = cal(temp, ans)
 	return ans
+
+```
 
 1. MCM
 2. Printing MCM
@@ -201,23 +239,20 @@ def solve(arr: str/List, i: int, j: int)->int:
 6. Scramble String
 7. Egg Dropping Problem
 
-
 ## DP on Trees
 
+```python
 def solve(root: Node)-> int:
 	if root is None:
 		return 0
-	
 	l = solve(root.left)
 	r = solve(root.right)
-	
 	temp = calc(l,r)
-	
 	ans = max/min(temp, ans)
-	
 	res = max/min(res,ans)
-	
 	return res
+
+```
 
 1. Diameter of a Binary tree
 2. Maximum Path sum from any node to any
@@ -226,115 +261,123 @@ def solve(root: Node)-> int:
 
 ## DP on Grid
 
-
 ## Count Pattern
+
+```python
 
 def solve(n):
 	dp1 = [ 0 for i in range(n+1)]
 	dp2 = [ 0 for i in range(n+1)]
-	
 	dp1[1] = 1
 	dp2[1] = 1
-	
 	for i in range(2, n+1):
 		dp2[i] = dp2[i-1] + dp1[i-1]
-		dp1[i] = dp2[i-1]
-		
-	
+	dp1[i] = dp2[i-1]
 	return dp1[n] + dp2[n]
+
+```
 
 1. Count Binary String
 2. Arrange Building
 3. Decode Ways
-4. Count Subsequencees of form A*B*C* Subsequences
+4. Count Subsequences of form A*B*C\* Subsequences
 5. Maximum Sum Non Adjacent Elements
 6. Paint House 3 color
 7. Paint House many color
 8. Paint Fences
 9. Tiling with Dominos
-10. Tiling with M*1 Tiles
+10. Tiling with M\*1 Tiles
 11. Friends pairing
-	f(n) = f(n-1) + (n-1)f(n-2)
-	
+    f(n) = f(n-1) + (n-1)f(n-2)
 12. Partition into Subsets
-	f(n,k) = k*f(n-1,k) + f(n-1,k-1)
-
+    f(n,k) = k\*f(n-1,k) + f(n-1,k-1)
 
 ## Buy Sell Shares
+
 1. Best Time to Buy and Sell Stocks - one transaction
-	
-	lsf = IntMax
-	op = 0
-	pist = 0
-	
-	for p in range(len(prices)):
-		if prices[p] < lsf:
-			lsf = pist
-		
-		pist = prices[p] - lsf		
-		op = max(op, pist)
 
-2.  Best Time to Buy and Sell Stocks - infinite transaction
-	
-	bp = 0
-	sp = 0
-	ans = 0
-	
-	for p in range(1, len(prices)):
-		if prices[p] < sp:
-			ans += prices[sp] - prices[bp]
-		
-			bp = p
-			sp = p
-		else:
-			sp += 1
-		
+```python
 
-3.  Best Time to Buy and Sell Stocks - with transaction fees
+lsf = IntMax
+op = 0
+pist = 0
 
-	bsp = prices[0]
-	ssp = 0
-	
-	for p in range(1, len(prices)):
-		tempbsp = min((prices[p] - ssp), bsp)
-		ssp = max((prices[p] - bsp - f), ssp)
-		bsp = tempbsp 
-		
+for p in range(len(prices)):
+	if prices[p] < lsf:
+		lsf = pist
+		pist = prices[p] - lsf
+
+	op = max(op, pist)
+
+```
+
+2. Best Time to Buy and Sell Stocks - infinite transaction
+
+```python
+
+bp = 0
+sp = 0
+ans = 0
+
+for p in range(1, len(prices)):
+	if prices[p] < sp:
+		ans += prices[sp] - prices[bp]
+		bp = p
+		sp = p
+	else:
+		sp += 1
+
+```
+
+3. Best Time to Buy and Sell Stocks - with transaction fees
+
+```python
+bsp = prices[0]
+ssp = 0
+
+for p in range(1, len(prices)):
+	tempbsp = min((prices[p] - ssp), bsp)
+	ssp = max((prices[p] - bsp - f), ssp)
+	bsp = tempbsp
+
+```
+
 4. Best Time to Buy and Sell Stocks - infinite transaction with cool down
 
-	bsp = prices[0]
-	ssp = 0
-	csp = 0
-	
-	for p in range(1, len(prices)):
-		nbsp = min((prices[p] - csp), bsp)
-		nssp = max((prices[p] - bsp), ssp)
-		ncsp = max(ssp , csp)
-		
-		bsp = nbsp
-		sso = nssp
-		csp = ncsp 
+```python
+
+bsp = prices[0]
+ssp = 0
+csp = 0
+
+for p in range(1, len(prices)):
+	nbsp = min((prices[p] - csp), bsp)
+	nssp = max((prices[p] - bsp), ssp)
+	ncsp = max(ssp , csp)
+	bsp = nbsp
+	sso = nssp
+	csp = ncsp
+
+
+```
 
 5. Best Time to Buy and Sell Stocks - two transaction
 
 6. Best Time to Buy and Sell Stocks - k transaction
 
-
 ## Others
+
 1. Largest Square Sub Matrix
 
-	
-	for i in range(n-1, -1,-1):
-		 for j in range(m-1, -1, -1):
-		 	if i == n-1 or j == m-1 or M[i][j] == 0:
-				A[i][j] = M[i][j]
-				continue
-				
-			A[i][j] = 1 + min(A[i][j-1], A[i-1][j], A[i-1][j-1]))
-			
-			
-		
-	
+```python
+for i in range(n-1, -1,-1):
+	for j in range(m-1, -1, -1):
+		if i == n-1 or j == m-1 or M[i][j] == 0:
+			A[i][j] = M[i][j]
+			continue
+		A[i][j] = 1 + min(A[i][j-1], A[i-1][j], A[i-1][j-1]))
+
+```
 
 ### Greedy Algorithm
 
@@ -353,8 +396,6 @@ def solve(n):
 
 11. Maximum performance of a team - LC1383
 
-
-
 ### Sliding Windows
 
 1. Maximum Sum Subarray of size K
@@ -362,12 +403,12 @@ def solve(n):
 
 3. Count Unique Characters of All Substrings of a Given String
 
- 	- contribution of a Character = leftWindowCount * rightWindowCount 
-	- Create dict<char, List<int>> to hold index of each character
-	- ABCAACD - len(str) = 6
-	- A -> -1,0,3,4,7
-	- left = I[i] - I(i-1)
-	- right = I[i+1] - I[i]
+   - contribution of a Character = leftWindowCount \* rightWindowCount
+   - Create dict<char, List<int>> to hold index of each character
+   - ABCAACD - len(str) = 6
+   - A -> -1,0,3,4,7
+   - left = I[i] - I(i-1)
+   - right = I[i+1] - I[i]
 
 4. Maximum Sum Circular Subarray
 
@@ -376,25 +417,25 @@ def solve(n):
 - else return max(max_sum, total_sum - min_sum)
 
 ### Stack
+
 1. Remove K digits | Build lowest number
 
 - remove first peak
--  Use stack, remove if the top of stack is greater than the current element and keep decrementing k
+- Use stack, remove if the top of stack is greater than the current element and keep decrementing k
 - if stack is empty and current element is 0, skip to next element.
 - If k = 0, insert rest of the element in the stack.
 - remove element from stack and create the string
 - T O(N), S O(N)
 
-
 ### Graph
 
+```python
 class Edge:
-	def __init__(self):
-		self.src
-		self.nbr
-		self.wt
-
-
+	def **init**(self):
+	self.src
+	self.nbr
+	self.wt
+```
 
 ### Bit Manipulation
 
@@ -412,11 +453,11 @@ off - and
 toggle - xor
 check - and
 
-
-
 ### Binary Search
 
 1. Allocate Minimum Number Of Pages
+
+```python
 
 nums = [10, 20, 30, 40]
 
@@ -430,27 +471,22 @@ res = -1
 
 while start <= end:
 	mid = start + (end - start)/2
-	
 	if isValid(nums,mid,m) == true:
 		res = mid
 		end = mid - 1
 	else:
 		start = mid + 1
 
-
 def isValid(nums, max, m):
 	tempM = 1
 	sum = 0
-	
 	for n in nums:
 		sum += n
-		
 		if sum > max:
 			tempM++
-			
-			if(tempM > m):
-				return false
-			sum  = n
-	
+		if(tempM > m):
+			return false
+			sum = n
 	return true
-		
+
+```

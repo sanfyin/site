@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>SanfyIn</title>
   <subtitle>A blogging site for sharing the experience of building software</subtitle>
-  <updated>2022-09-25T23:56:36+05:30</updated>
+  <updated>2023-07-17T22:54:37+05:30</updated>
   <author>
     <name>Sanfy.In</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/html" hreflang="en"
     href="http://0.0.0.0:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
-  <rights> © 2022 Sanfy.In </rights>
+  <rights> © 2023 Sanfy.In </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
@@ -44,44 +44,7 @@
 
 
 
-      Maths for coding
-
-Sieve of Eratosthenes -  to find the Prime Numbers
-
-Find GCD
-gcd(a,b) = gcd(a-b,b)
-
-if a&amp;gt;b
-
-gcd(a,b) = gcd(b,a%b)
-
-def gcd(a,b):
-
-if b==0:
-	return b
-
-return gcd(b, a%b)
-
-
-public static int gcd(int a, int b)
-{
-	if(b == 0)
-	{
-	return a;
-	}
-
-return gcd(b, a%b); }
-
-
-Fast Power
-
-
-    int res = 1;
-
-    while( b &amp;gt; 0) {
-        if((b &amp;amp; 1) != 0)
-        {
-            res = re...
+      With a good amount of practice of known questions, some very hard unknown DSA questions can be solved. There are well known patterns of questions and most of the questions that are asked in interviews fall into one or the other. If we do enough practice, we can easily identify the pattern and derive a solution. In this article, we will try to introduce the common patterns for solving DSA proble...
     </summary>
   
 

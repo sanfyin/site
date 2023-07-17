@@ -45,8 +45,8 @@
 <meta property="og:title" content="DSA Patterns" />
 <meta name="author" content="Sanfyin" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Maths for coding" />
-<meta property="og:description" content="Maths for coding" />
+<meta name="description" content="With a good amount of practice of known questions, some very hard unknown DSA questions can be solved. There are well known patterns of questions and most of the questions that are asked in interviews fall into one or the other. If we do enough practice, we can easily identify the pattern and derive a solution. In this article, we will try to introduce the common patterns for solving DSA problems." />
+<meta property="og:description" content="With a good amount of practice of known questions, some very hard unknown DSA questions can be solved. There are well known patterns of questions and most of the questions that are asked in interviews fall into one or the other. If we do enough practice, we can easily identify the pattern and derive a solution. In this article, we will try to introduce the common patterns for solving DSA problems." />
 <link rel="canonical" href="http://0.0.0.0:4000/posts/dsa-patterns-notes/" />
 <meta property="og:url" content="http://0.0.0.0:4000/posts/dsa-patterns-notes/" />
 <meta property="og:site_name" content="SanfyIn" />
@@ -57,7 +57,7 @@
 <meta name="twitter:site" content="@sanfyin" />
 <meta name="twitter:creator" content="@Sanfyin" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sanfyin"},"dateModified":"2022-09-17T22:04:00+05:30","datePublished":"2022-09-17T22:04:00+05:30","description":"Maths for coding","headline":"DSA Patterns","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/posts/dsa-patterns-notes/"},"url":"http://0.0.0.0:4000/posts/dsa-patterns-notes/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sanfyin"},"dateModified":"2022-09-17T22:04:00+05:30","datePublished":"2022-09-17T22:04:00+05:30","description":"With a good amount of practice of known questions, some very hard unknown DSA questions can be solved. There are well known patterns of questions and most of the questions that are asked in interviews fall into one or the other. If we do enough practice, we can easily identify the pattern and derive a solution. In this article, we will try to introduce the common patterns for solving DSA problems.","headline":"DSA Patterns","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/posts/dsa-patterns-notes/"},"url":"http://0.0.0.0:4000/posts/dsa-patterns-notes/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -930,8 +930,8 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="1363 words">
-  <em>7 min</em> read</span>
+  title="1647 words">
+  <em>9 min</em> read</span>
 
     </div>
 
@@ -940,42 +940,116 @@
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-  <h2 id="maths-for-coding"><span class="mr-2">Maths for coding</span><a href="#maths-for-coding" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+  <p>With a good amount of practice of known questions, some very hard unknown DSA questions can be solved. There are well known patterns of questions and most of the questions that are asked in interviews fall into one or the other. If we do enough practice, we can easily identify the pattern and derive a solution. In this article, we will try to introduce the common patterns for solving DSA problems.</p>
 
-<h3 id="sieve-of-eratosthenes----to-find-the-prime-numbers"><span class="mr-2">Sieve of Eratosthenes -  to find the Prime Numbers</span><a href="#sieve-of-eratosthenes----to-find-the-prime-numbers" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<h2 id="maths-for-coding"><span class="mr-2">Maths for coding</span><a href="#maths-for-coding" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<h3 id="find-gcd"><span class="mr-2">Find GCD</span><a href="#find-gcd" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
-<p>gcd(a,b) = gcd(a-b,b)</p>
+<h3 id="sieve-of-eratosthenes---to-find-the-prime-numbers"><span class="mr-2">Sieve of Eratosthenes - to find the Prime Numbers</span><a href="#sieve-of-eratosthenes---to-find-the-prime-numbers" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>if a&gt;b</p>
-
-<p>gcd(a,b) = gcd(b,a%b)</p>
-
-<p>def gcd(a,b):</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-cs highlighter-rouge"><div class="code-header">
+        <span data-label-text="C#"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
-</pre></td><td class="rouge-code"><pre>if b==0:
-	return b
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>
 
-return gcd(b, a%b)
+	<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span> <span class="p">=</span> <span class="m">1000000</span><span class="p">;</span>
+
+	<span class="c1">// Declare a boolean array and mark all element as prime</span>
+    <span class="kt">bool</span><span class="p">[]</span> <span class="n">primes</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">bool</span><span class="p">[</span><span class="n">MAX</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="n">primes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+      <span class="n">primes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Loop through a portion of the array (up to the square root of MAX). If</span>
+    <span class="c1">// it's a prime, ensure all multiples of it are set to false, as they</span>
+    <span class="c1">// clearly cannot be prime.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">2</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="n">Math</span><span class="p">.</span><span class="nf">Sqrt</span><span class="p">(</span><span class="n">MAX</span><span class="p">)+</span><span class="m">1</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">primes</span><span class="p">[</span><span class="n">i</span><span class="p">-</span><span class="m">1</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="p">=(</span><span class="kt">int</span><span class="p">)</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Pow</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">2</span><span class="p">);</span> <span class="n">j</span><span class="p">&lt;=</span><span class="n">MAX</span><span class="p">;</span> <span class="n">j</span><span class="p">+=</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">primes</span><span class="p">[</span><span class="n">j</span> <span class="p">-</span> <span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>public static int gcd(int a, int b)
-{
-	if(b == 0)
-	{
-	return a;
-	}</p>
+<h3 id="find-gcd"><span class="mr-2">Find GCD</span><a href="#find-gcd" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-cs highlighter-rouge"><div class="code-header">
+        <span data-label-text="C#"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>return gcd(b, a%b); }
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre>
+<span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="p">=</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">-</span><span class="n">b</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">a</span><span class="p">&gt;</span><span class="n">b</span>
+
+<span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="p">=</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">%</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+
+	<span class="k">if</span> <span class="n">b</span><span class="p">==</span><span class="m">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">b</span>
+
+	<span class="k">return</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">%</span><span class="n">b</span><span class="p">)</span>
+
+
+
+<span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">b</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">%</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+
 </pre></td></tr></tbody></table></code></div></div>
 
 <h3 id="fast-power"><span class="mr-2">Fast Power</span><a href="#fast-power" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
@@ -1005,9 +1079,9 @@ return gcd(b, a%b)
         <span class="p">{</span>
             <span class="n">res</span> <span class="p">=</span> <span class="n">res</span> <span class="p">*</span> <span class="n">a</span><span class="p">;</span>
         <span class="p">}</span>
-        
+
         <span class="n">a</span> <span class="p">=</span> <span class="n">a</span> <span class="p">*</span> <span class="n">a</span><span class="p">;</span>
-        <span class="n">b</span> <span class="p">=</span> <span class="n">b</span> <span class="p">&gt;&gt;</span> <span class="m">1</span><span class="p">;</span> 
+        <span class="n">b</span> <span class="p">=</span> <span class="n">b</span> <span class="p">&gt;&gt;</span> <span class="m">1</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
@@ -1020,14 +1094,28 @@ return gcd(b, a%b)
   <li>Program to write Catalan Numbers</li>
 </ol>
 
-<p>dp[0] = 1
-dp[1] = 1</p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>
+<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
-<p>for i in range(2,n):
-	for j in range(i):
-		dp[i] += dp[j]*dp[i-j-1]</p>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+		<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+</pre></td></tr></tbody></table></code></div></div>
 
 <p>Variations:</p>
+
 <ol>
   <li>Number of Binary Search Trees.</li>
   <li>Count of Valleys and Mountains</li>
@@ -1041,22 +1129,24 @@ dp[1] = 1</p>
 
 <h2 id="0-1-knapsack"><span class="mr-2">0-1 Knapsack</span><a href="#0-1-knapsack" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def knapsack(wt: List[int], val: List[int], int W, int n)-&gt;int:
-	if n == 0 or W == 0:
-		return 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-</pre></td><td class="rouge-code"><pre>if wt[n-1] &lt;= W:
-	return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n-1), 
-				knapsack(wt,val, W, n-1))
-else:
-	return knapsack(wt,val, W, n-1)
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">val</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span> <span class="n">W</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">W</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">0</span>
+	<span class="k">if</span> <span class="n">wt</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">W</span><span class="p">:</span>
+		<span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">,</span><span class="n">val</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">wt</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">,</span><span class="n">val</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">,</span><span class="n">val</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
@@ -1070,22 +1160,26 @@ else:
 
 <h2 id="unbounded-knapsack"><span class="mr-2">Unbounded Knapsack</span><a href="#unbounded-knapsack" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def knapsack(wt: List[int], val: List[int], int W, int n)-&gt;int:
-	if n == 0 or W == 0:
-		return 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-</pre></td><td class="rouge-code"><pre>if wt[n-1] &lt;= W:
-	return max(val[n-1] + knapsack(wt,val, W - wt[n-1],n), 
-				knapsack(wt,val, W, n-1))
-else:
-	return knapsack(wt,val, W, n-1)
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>
+<span class="k">def</span> <span class="nf">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">val</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span> <span class="n">W</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">W</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">0</span>
+	<span class="k">if</span> <span class="n">wt</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">W</span><span class="p">:</span>
+		<span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">,</span><span class="n">val</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">wt</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">n</span><span class="p">),</span><span class="n">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">,</span><span class="n">val</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">knapsack</span><span class="p">(</span><span class="n">wt</span><span class="p">,</span><span class="n">val</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
@@ -1097,20 +1191,24 @@ else:
 
 <h2 id="fibonacci"><span class="mr-2">Fibonacci</span><a href="#fibonacci" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def fibo(n: int)-&gt; int:
-	dp[0] = 0
-	dp[1] = 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
-</pre></td><td class="rouge-code"><pre>for i in range(2,n+1):
-	dp[i] = dp[i-1] + dp[i-2]
-	
-return dp[n]
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>
+<span class="k">def</span> <span class="nf">fibo</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+	<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
@@ -1124,29 +1222,29 @@ return dp[n]
 
 <h2 id="lcs---longest-common-subsequence"><span class="mr-2">LCS - Longest Common Subsequence</span><a href="#lcs---longest-common-subsequence" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def lcs(x: str, y: str, n: int, m: int)-&gt;int:
-	if n == 0 or m == 0:
-		return 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-cs highlighter-rouge"><div class="code-header">
+        <span data-label-text="C#"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-</pre></td><td class="rouge-code"><pre>if x[n] == y[m]:
-	return 1 + lcs(x, y, n-1, m-1)
-else:
-	return max(lcs(x, y, n-1, m),
-				lcs(x, y, n, m-1))
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">def</span> <span class="nf">lcs</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="kt">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="kt">int</span><span class="p">)-&gt;</span><span class="kt">int</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">n</span> <span class="p">==</span> <span class="m">0</span> <span class="n">or</span> <span class="n">m</span> <span class="p">==</span> <span class="m">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="m">0</span>
+	<span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="p">==</span> <span class="n">y</span><span class="p">[</span><span class="n">m</span><span class="p">]:</span>
+		<span class="k">return</span> <span class="m">1</span> <span class="p">+</span> <span class="nf">lcs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="n">m</span><span class="p">-</span><span class="m">1</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="nf">max</span><span class="p">(</span><span class="nf">lcs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span><span class="nf">lcs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">-</span><span class="m">1</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
   <li>Longest Common Subsequence</li>
   <li>Largest Common Substring</li>
   <li>Print LCS</li>
-  <li>Shortest common Superseuence</li>
+  <li>Shortest common Super sequence</li>
   <li>Print SCS</li>
   <li>Minimum number of insertion or deletion to convert string a to b</li>
   <li>Length of largest subsequence of a which is a substring in b</li>
@@ -1165,7 +1263,7 @@ else:
 <ol>
   <li>LIS</li>
   <li>Print all LIS</li>
-  <li>Maxumum sum increasing subsequence</li>
+  <li>Maximum sum increasing subsequence</li>
   <li>Longest Bitonic Subsequence</li>
   <li>Maximum Non-Overlapping Bridges</li>
   <li>Russian Doll Envelopes</li>
@@ -1182,24 +1280,26 @@ else:
 
 <h2 id="matrix-chain-multiplication"><span class="mr-2">Matrix Chain Multiplication</span><a href="#matrix-chain-multiplication" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def solve(arr: str/List, i: int, j: int)-&gt;int:
-	if i &gt; j:
-		return 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
 6
-</pre></td><td class="rouge-code"><pre>for k in range(i,j):
-	temp = solve(arr, i,k) + solve(arr, k+1,j)
-	
-	ans = cal(temp, ans)
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="nb">str</span><span class="o">/</span><span class="n">List</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">):</span>
+		<span class="n">temp</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">solve</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+	<span class="n">ans</span> <span class="o">=</span> <span class="n">cal</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">ans</span>
 
-return ans
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
@@ -1214,12 +1314,8 @@ return ans
 
 <h2 id="dp-on-trees"><span class="mr-2">DP on Trees</span><a href="#dp-on-trees" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def solve(root: Node)-&gt; int:
-	if root is None:
-		return 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1230,16 +1326,16 @@ return ans
 8
 9
 10
-</pre></td><td class="rouge-code"><pre>l = solve(root.left)
-r = solve(root.right)
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">0</span>
+	<span class="n">l</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">)</span>
+	<span class="n">r</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">)</span>
+	<span class="n">temp</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">)</span>
+	<span class="n">ans</span> <span class="o">=</span> <span class="nb">max</span><span class="o">/</span><span class="nb">min</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span>
+	<span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="o">/</span><span class="nb">min</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">ans</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">res</span>
 
-temp = calc(l,r)
-
-ans = max/min(temp, ans)
-
-res = max/min(res,ans)
-
-return res
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
@@ -1253,12 +1349,8 @@ return res
 
 <h2 id="count-pattern"><span class="mr-2">Count Pattern</span><a href="#count-pattern" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>def solve(n):
-	dp1 = [ 0 for i in range(n+1)]
-	dp2 = [ 0 for i in range(n+1)]</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1268,113 +1360,167 @@ return res
 7
 8
 9
-</pre></td><td class="rouge-code"><pre>dp1[1] = 1
-dp2[1] = 1
+10
+11
+</pre></td><td class="rouge-code"><pre>
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+	<span class="n">dp1</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+	<span class="n">dp2</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+	<span class="n">dp1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">dp2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">dp2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+	<span class="n">dp1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">dp1</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp2</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
 
-for i in range(2, n+1):
-	dp2[i] = dp2[i-1] + dp1[i-1]
-	dp1[i] = dp2[i-1]
-	
-
-return dp1[n] + dp2[n]
 </pre></td></tr></tbody></table></code></div></div>
 
 <ol>
   <li>Count Binary String</li>
   <li>Arrange Building</li>
   <li>Decode Ways</li>
-  <li>Count Subsequencees of form A<em>B</em>C* Subsequences</li>
+  <li>Count Subsequences of form A<em>B</em>C* Subsequences</li>
   <li>Maximum Sum Non Adjacent Elements</li>
   <li>Paint House 3 color</li>
   <li>Paint House many color</li>
   <li>Paint Fences</li>
   <li>Tiling with Dominos</li>
   <li>Tiling with M*1 Tiles</li>
-  <li>
-    <p>Friends pairing
-f(n) = f(n-1) + (n-1)f(n-2)</p>
-  </li>
+  <li>Friends pairing
+f(n) = f(n-1) + (n-1)f(n-2)</li>
   <li>Partition into Subsets
 f(n,k) = k*f(n-1,k) + f(n-1,k-1)</li>
 </ol>
 
 <h2 id="buy-sell-shares"><span class="mr-2">Buy Sell Shares</span><a href="#buy-sell-shares" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
 <ol>
-  <li>
-    <p>Best Time to Buy and Sell Stocks - one transaction</p>
+  <li>Best Time to Buy and Sell Stocks - one transaction</li>
+</ol>
 
-    <p>lsf = IntMax
- op = 0
- pist = 0</p>
-
-    <p>for p in range(len(prices)):
-     if prices[p] &lt; lsf:
-         lsf = pist</p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
-      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre> pist = prices[p] - lsf		
- op = max(op, pist)
-</pre></td></tr></tbody></table></code></div>    </div>
-  </li>
-  <li>
-    <p>Best Time to Buy and Sell Stocks - infinite transaction</p>
-
-    <p>bp = 0
-sp = 0
-ans = 0</p>
-
-    <p>for p in range(1, len(prices)):
-    if prices[p] &lt; sp:
-        ans += prices[sp] - prices[bp]</p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
-</pre></td><td class="rouge-code"><pre>    bp = p
-    sp = p
-else:
-    sp += 1
-</pre></td></tr></tbody></table></code></div>    </div>
-  </li>
-  <li>
-    <p>Best Time to Buy and Sell Stocks - with transaction fees</p>
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>
+<span class="n">lsf</span> <span class="o">=</span> <span class="n">IntMax</span>
+<span class="n">op</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pist</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <p>bsp = prices[0]
-ssp = 0</p>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+	<span class="k">if</span> <span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lsf</span><span class="p">:</span>
+		<span class="n">lsf</span> <span class="o">=</span> <span class="n">pist</span>
+		<span class="n">pist</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">lsf</span>
 
-    <p>for p in range(1, len(prices)):
-    tempbsp = min((prices[p] - ssp), bsp)
-    ssp = max((prices[p] - bsp - f), ssp)
-    bsp = tempbsp</p>
-  </li>
-  <li>
-    <p>Best Time to Buy and Sell Stocks - infinite transaction with cool down</p>
+	<span class="n">op</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">pist</span><span class="p">)</span>
 
-    <p>bsp = prices[0]
- ssp = 0
- csp = 0</p>
+</pre></td></tr></tbody></table></code></div></div>
 
-    <p>for p in range(1, len(prices)):
-     nbsp = min((prices[p] - csp), bsp)
-     nssp = max((prices[p] - bsp), ssp)
-     ncsp = max(ssp , csp)</p>
+<ol>
+  <li>Best Time to Buy and Sell Stocks - infinite transaction</li>
+</ol>
 
-    <div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre> bsp = nbsp
- sso = nssp
- csp = ncsp 
-</pre></td></tr></tbody></table></code></div>    </div>
-  </li>
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>
+<span class="n">bp</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sp</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+	<span class="k">if</span> <span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">sp</span><span class="p">:</span>
+		<span class="n">ans</span> <span class="o">+=</span> <span class="n">prices</span><span class="p">[</span><span class="n">sp</span><span class="p">]</span> <span class="o">-</span> <span class="n">prices</span><span class="p">[</span><span class="n">bp</span><span class="p">]</span>
+		<span class="n">bp</span> <span class="o">=</span> <span class="n">p</span>
+		<span class="n">sp</span> <span class="o">=</span> <span class="n">p</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">sp</span> <span class="o">+=</span> <span class="mi">1</span>
+
+</pre></td></tr></tbody></table></code></div></div>
+
+<ol>
+  <li>Best Time to Buy and Sell Stocks - with transaction fees</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">bsp</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ssp</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+	<span class="n">tempbsp</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">ssp</span><span class="p">),</span> <span class="n">bsp</span><span class="p">)</span>
+	<span class="n">ssp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">bsp</span> <span class="o">-</span> <span class="n">f</span><span class="p">),</span> <span class="n">ssp</span><span class="p">)</span>
+	<span class="n">bsp</span> <span class="o">=</span> <span class="n">tempbsp</span>
+
+</pre></td></tr></tbody></table></code></div></div>
+
+<ol>
+  <li>Best Time to Buy and Sell Stocks - infinite transaction with cool down</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>
+<span class="n">bsp</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ssp</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">csp</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+	<span class="n">nbsp</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">csp</span><span class="p">),</span> <span class="n">bsp</span><span class="p">)</span>
+	<span class="n">nssp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">bsp</span><span class="p">),</span> <span class="n">ssp</span><span class="p">)</span>
+	<span class="n">ncsp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ssp</span> <span class="p">,</span> <span class="n">csp</span><span class="p">)</span>
+	<span class="n">bsp</span> <span class="o">=</span> <span class="n">nbsp</span>
+	<span class="n">sso</span> <span class="o">=</span> <span class="n">nssp</span>
+	<span class="n">csp</span> <span class="o">=</span> <span class="n">ncsp</span>
+
+
+</pre></td></tr></tbody></table></code></div></div>
+
+<ol>
   <li>
     <p>Best Time to Buy and Sell Stocks - two transaction</p>
   </li>
@@ -1384,23 +1530,28 @@ ssp = 0</p>
 </ol>
 
 <h2 id="others"><span class="mr-2">Others</span><a href="#others" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
 <ol>
-  <li>
-    <p>Largest Square Sub Matrix</p>
-
-    <p>for i in range(n-1, -1,-1):
-      for j in range(m-1, -1, -1):
-      	if i == n-1 or j == m-1 or M[i][j] == 0:
-             A[i][j] = M[i][j]
-             continue</p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
-      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>     A[i][j] = 1 + min(A[i][j-1], A[i-1][j], A[i-1][j-1]))
-</pre></td></tr></tbody></table></code></div>    </div>
-  </li>
+  <li>Largest Square Sub Matrix</li>
 </ol>
+
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="n">m</span><span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+			<span class="k">continue</span>
+		<span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+</pre></td></tr></tbody></table></code></div></div>
 
 <h3 id="greedy-algorithm"><span class="mr-2">Greedy Algorithm</span><a href="#greedy-algorithm" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
@@ -1429,25 +1580,18 @@ ssp = 0</p>
   <li>
     <p>First Negative Number in every Window of Size K</p>
   </li>
-  <li>Count Unique Characters of All Substrings of a Given String</li>
-</ol>
+  <li>
+    <p>Count Unique Characters of All Substrings of a Given String</p>
 
- 	- contribution of a Character = leftWindowCount * rightWindowCount 
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
-      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre>- Create dict&lt;char, List&lt;int&gt;&gt; to hold index of each character
-- ABCAACD - len(str) = 6
-- A -&gt; -1,0,3,4,7
-- left = I[i] - I(i-1)
-- right = I[i+1] - I[i]
-</pre></td></tr></tbody></table></code></div></div>
-
-<ol>
+    <ul>
+      <li>contribution of a Character = leftWindowCount * rightWindowCount</li>
+      <li>Create dict&lt;char, List<int>&gt; to hold index of each character</int></li>
+      <li>ABCAACD - len(str) = 6</li>
+      <li>A -&gt; -1,0,3,4,7</li>
+      <li>left = I[i] - I(i-1)</li>
+      <li>right = I[i+1] - I[i]</li>
+    </ul>
+  </li>
   <li>Maximum Sum Circular Subarray</li>
 </ol>
 
@@ -1458,6 +1602,7 @@ ssp = 0</p>
 </ul>
 
 <h3 id="stack"><span class="mr-2">Stack</span><a href="#stack" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
 <ol>
   <li>
     <div class="table-wrapper"><table>
@@ -1482,11 +1627,19 @@ ssp = 0</p>
 
 <h3 id="graph"><span class="mr-2">Graph</span><a href="#graph" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>class Edge:
-	def <strong>init</strong>(self):
-		self.src
-		self.nbr
-		self.wt</p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Edge</span><span class="p">:</span>
+	<span class="k">def</span> <span class="err">**</span><span class="nf">init</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="bp">self</span><span class="p">.</span><span class="n">src</span>
+	<span class="bp">self</span><span class="p">.</span><span class="n">nbr</span>
+	<span class="bp">self</span><span class="p">.</span><span class="n">wt</span>
+</pre></td></tr></tbody></table></code></div></div>
 
 <h3 id="bit-manipulation"><span class="mr-2">Bit Manipulation</span><a href="#bit-manipulation" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
@@ -1510,39 +1663,8 @@ check - and</p>
   <li>Allocate Minimum Number Of Pages</li>
 </ol>
 
-<p>nums = [10, 20, 30, 40]</p>
-
-<p>if m &gt; len(nums):
-	return -1</p>
-
-<p>start = Max(nums)
-end = Sum(nums)</p>
-
-<p>res = -1</p>
-
-<p>while start &lt;= end:
-	mid = start + (end - start)/2</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
-      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre>if isValid(nums,mid,m) == true:
-	res = mid
-	end = mid - 1
-else:
-	start = mid + 1
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>def isValid(nums, max, m):
-	tempM = 1
-	sum = 0</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span data-label-text="Python"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1554,19 +1676,58 @@ else:
 9
 10
 11
-</pre></td><td class="rouge-code"><pre>for n in nums:
-	sum += n
-	
-	if sum &gt; max:
-		tempM++
-		
-		if(tempM &gt; m):
-			return false
-		sum  = n
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 
-return true
+<span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+	<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">Max</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+	<span class="n">mid</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+	<span class="k">if</span> <span class="n">isValid</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="n">mid</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="n">true</span><span class="p">:</span>
+		<span class="n">res</span> <span class="o">=</span> <span class="n">mid</span>
+		<span class="n">end</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">start</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+	<span class="n">tempM</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+		<span class="nb">sum</span> <span class="o">+=</span> <span class="n">n</span>
+		<span class="k">if</span> <span class="nb">sum</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">:</span>
+			<span class="n">tempM</span><span class="o">++</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">tempM</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">):</span>
+			<span class="k">return</span> <span class="n">false</span>
+			<span class="nb">sum</span> <span class="o">=</span> <span class="n">n</span>
+	<span class="k">return</span> <span class="n">true</span>
+
 </pre></td></tr></tbody></table></code></div></div>
-
 
 </div>
 
@@ -2524,7 +2685,7 @@ C# is an object oriented programming language developed by Microsoft. The syntex
   <div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0">
     <div class="footer-left">
       <p class="mb-0">
-        © 2022
+        © 2023
         <a href="https://twitter.com/sanfyin">Sanfy.In</a>.
         
         <span data-toggle="tooltip" data-placement="top"
