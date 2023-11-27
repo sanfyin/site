@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>SanfyIn</title>
   <subtitle>A blogging site for sharing the experience of building software</subtitle>
-  <updated>2023-07-17T22:54:37+05:30</updated>
+  <updated>2023-11-27T23:41:40+05:30</updated>
   <author>
     <name>Sanfy.In</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://0.0.0.0:4000/posts/dsa-patterns-notes/" rel="alternate" type="text/html" title="DSA Patterns" />
     <published>2022-09-17T22:04:00+05:30</published>
   
-    <updated>2022-09-17T22:04:00+05:30</updated>
+    <updated>2023-07-17T22:58:12+05:30</updated>
   
     <id>http://0.0.0.0:4000/posts/dsa-patterns-notes/</id>
     <content src="http://0.0.0.0:4000/posts/dsa-patterns-notes/" />
